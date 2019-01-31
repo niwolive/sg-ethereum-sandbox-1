@@ -7,7 +7,7 @@ const inboxPath = path.resolve(__dirname, 'contracts', 'Inbox.sol');
 const params = {
     language: "Solidity",
     sources: {
-      "Inbox": {
+      "Inbox.sol": {
         content: fs.readFileSync(inboxPath, 'utf-8')
       }
     },
@@ -19,5 +19,5 @@ const params = {
       }
     }
 };
-module.exports = solc.compile(JSON.stringify(params)).contracts[':Inbox'];
+module.exports = JSON.parse(solc.compile(JSON.stringify(params))).contracts['Inbox.sol'].Inbox;
 
